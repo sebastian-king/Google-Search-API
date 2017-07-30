@@ -7,10 +7,14 @@ The usage is simple once the script has been included, simply call the `search` 
 
 ```
 // config.php: define("SITE", "example.com");
-// function header: search($query, $timeout = 5) { ... }
+// function header: search($query, $timeout = 5, $site_domain = SITE) { ... }
 
 $results = search("dragons");
 
-$results = search($_GET['query'], 5);
+$results = search($_GET['query'], 5, "example.com");
 ```
+
+If a site domain is provided as a third argument to the funcfion, it will overwrite the site specified on the config file.
+
 The above function will search Google specifically for web pages on your website, as defined in your config.php file, in this case it is `example.com` and display the results on your website as your own personal search page.
+The function will return `false` should it receive a captcha verification from Google. It is recommended to use this function with something such as proxies that can bypass Google's search limits.
