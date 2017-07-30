@@ -1,11 +1,14 @@
 <?php
 
-if (file_exists("config.php")) {
-	include("config.php");
+if (file_exists(__DIR__ . "/config.php")) {
+	include(__DIR__ . "/config.php");
 }
-require("dom.php");
+require(__DIR__ . "/dom.php");
 
 function search($query, $timeout = 5, $site_domain = SITE) {
+	if (!$site_domain) {
+		return false;
+	}
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, "https://www.google.com/search?hl=en&output=search&q=site%3A" . $site_domain . "+" . urlencode($query));
 	curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36');
