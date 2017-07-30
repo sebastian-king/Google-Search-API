@@ -6,8 +6,11 @@ To use the scraper to display Google search results for your website, you just n
 The usage is simple once the script has been included, simply call the `search` function with the argument `query` and optional argument `timeout (seconds)`, like so:
 
 ```
+// config.php: define("SITE", "example.com");
 // function header: search($query, $timeout = 5) { ... }
 
 $results = search("dragons");
 
 $results = search($_GET['query'], 5);
+```
+The above function will search Google specifically for web pages on your website `example.com` and display the results on your website as your own personal search page.
