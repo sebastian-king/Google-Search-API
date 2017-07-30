@@ -13,4 +13,4 @@ $results = search("dragons");
 
 $results = search($_GET['query'], 5);
 ```
-The above function will search Google specifically for web pages on your website `example.com` and display the results on your website as your own personal search page.
+The above function will search Google specifically for web pages on your website, as defined in your config.php file, in this case it is `example.com` and display the results on your website as your own personal search page.
