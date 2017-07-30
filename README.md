@@ -6,15 +6,8 @@ To use the scraper to display Google search results for your website, you just n
 The usage is simple once the script has been included, simply call the `search` function with the argument `query` and optional argument `timeout (seconds)`, like so:
 
 ```
-search($query, $timeout = 5) {
-	...
-}
+// function header: search($query, $timeout = 5) { ... }
 
-search("dragons") {
-	...
-}
+$results = search("dragons");
 
-search($_GET['query'], $timeout = 5) {
-	...
-}
-```
+$results = search($_GET['query'], 5);
