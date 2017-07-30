@@ -1,6 +1,8 @@
 <?php
 
-include("config.php");
+if (file_exists("config.php")) {
+	include("config.php");
+}
 require("dom.php");
 
 function search($query, $timeout = 5, $site_domain = SITE) {
