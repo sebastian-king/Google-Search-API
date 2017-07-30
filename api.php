@@ -5,7 +5,7 @@ require("dom.php");
 
 function search($query, $timeout = 5) {
 	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL, "https://www.google.com/search?hl=en&output=search&q=site%3A" . SITE . "+{$query}");
+	curl_setopt($ch, CURLOPT_URL, "https://www.google.com/search?hl=en&output=search&q=site%3A" . SITE . "+" . urlencode($query));
 	curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36');
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
