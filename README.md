@@ -27,5 +27,6 @@ The backup search option can easily be implemented as failover, like so:
 if (!$result = search($query)) {
   $result = cse_search($query);
 }
+```
 
 If you exceed your CSE search quota, the function `cse_search` will return false.
