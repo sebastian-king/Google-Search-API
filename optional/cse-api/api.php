@@ -8,11 +8,18 @@ function cse_search($query) {
 	$client->setApplicationName("AppName");
 	$client->setDeveloperKey(GOOGLE_API_KEY);
 
+	try {
 	$service = new Google_Service_Customsearch($client);
 
 	$optParams = array("cx"=>GOOGLE_CSE_ID);
 	$result = $service->cse->listCse($query, $optParams);
-	
+	} catch (Google_Service_Exception $e) {
+		$errors = $e->getErrors();
+	}
+	if ($errors[0]['reason'] == "dailyLimitExceeded") {
+		return false;
+	}
+
 	$i = 0;
 	$results = array();
 	
