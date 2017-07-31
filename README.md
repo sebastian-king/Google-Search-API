@@ -19,3 +19,11 @@ If a site domain is provided as a third argument to the funcfion, it will overwr
 The above function will search Google specifically for web pages on your website, as defined in your config.php file, in this case it is `example.com` and display the results on your website as your own personal search page.
 
 The function will return `false` should it receive a captcha verification from Google. It is recommended to use this function with something such as proxies that can bypass Google's search limits.
+
+A backup search option is provided in case the scrape function fails or receives a captcha, this options uses Google's [CSE API](https://developers.google.com/custom-search/json-api/v1/overview) and therefore needs a CSE ID and API Key and which can be found at https://cse.google.com/cse/ and https://developers.google.com/custom-search/json-api/v1/overview. Once you have these they can be entered in the config file.
+
+The backup search option can easily be implemented as failover, like so:
+```
+if (!$result = search($query)) {
+  $result = backup_search($query);
+}
