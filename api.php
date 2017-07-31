@@ -1,7 +1,7 @@
 <?php
 
 if (file_exists(__DIR__ . "/config.php")) {
-	include(__DIR__ . "/config.php");
+	include_once(__DIR__ . "/config.php");
 }
 require(__DIR__ . "/dom.php");
 
