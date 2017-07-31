@@ -2,16 +2,16 @@
 require_once(__DIR__ . '/vendor/autoload.php');
 require_once(__DIR__ . "/../../config.php");
 
-function cse_search($query) {
+function cse_search($query, $GOOGLE_CSE_ID = GOOGLE_CSE_ID, $GOOGLE_API_KEY = GOOGLE_API_KEY) {
 
 	$client = new Google_Client();
 	$client->setApplicationName("AppName");
-	$client->setDeveloperKey(GOOGLE_API_KEY);
+	$client->setDeveloperKey($GOOGLE_API_KEY);
 
 	try {
 	$service = new Google_Service_Customsearch($client);
 
-	$optParams = array("cx"=>GOOGLE_CSE_ID);
+	$optParams = array("cx"=>$GOOGLE_CSE_ID);
 	$result = $service->cse->listCse($query, $optParams);
 	} catch (Google_Service_Exception $e) {
 		$errors = $e->getErrors();
