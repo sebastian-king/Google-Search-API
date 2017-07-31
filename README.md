@@ -24,9 +24,13 @@ A backup search option is provided in case the scrape function fails or receives
 
 The backup search option can easily be implemented as failover, like so:
 ```
+// config.php: define("GOOGLE_CSE_ID", "<cse_id>");
+// config.php: define("GOOGLE_API_KEY", "<api_key>");
+// function header: search($query, $GOOGLE_CSE_ID = GOOGLE_CSE_ID, $GOOGLE_API_KEY = GOOGLE_API_KEY) { ... }
+
 if (!$results = search($query)) {
   $results = cse_search($query);
 }
 ```
 
-If you exceed your CSE search quota, the function `cse_search` will return false.
+If you exceed your CSE search quota, the function `cse_search` will return false. Because the `cse_search` function supports passing the CSE ID and API Key via arguments, is it possible to modify the passed arguments and switch to another CSE account that has quota remaining should one run out.
