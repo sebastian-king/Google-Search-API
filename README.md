@@ -25,5 +25,5 @@ A backup search option is provided in case the scrape function fails or receives
 The backup search option can easily be implemented as failover, like so:
 ```
 if (!$result = search($query)) {
-  $result = backup_search($query);
+  $result = cse_search($query);
 }
