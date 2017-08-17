@@ -26,7 +26,7 @@ The backup search option can easily be implemented as failover, like so:
 ```
 // config.php: define("GOOGLE_CSE_ID", "<cse_id>");
 // config.php: define("GOOGLE_API_KEY", "<api_key>");
-// function header: search($query, $GOOGLE_CSE_ID = GOOGLE_CSE_ID, $GOOGLE_API_KEY = GOOGLE_API_KEY) { ... }
+// function header: cse_search($query, $GOOGLE_CSE_ID = GOOGLE_CSE_ID, $GOOGLE_API_KEY = GOOGLE_API_KEY) { ... }
 
 if (!$results = search($query)) {
   $results = cse_search($query);
